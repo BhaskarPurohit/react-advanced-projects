@@ -2,9 +2,13 @@ import React from 'react'
 
 const Button = (props) => {
   console.log(props)
-  const {children} = props
+  const {children, clickAction} = props
+  const handleClick = ()=>{
+    console.log("click inside component");
+    clickAction()
+  }
   return (
-    <button>Button</button>
+    <button onClick={handleClick}>{children}</button>
   )
 }
 
