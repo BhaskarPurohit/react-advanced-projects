@@ -1,5 +1,5 @@
 import Button from "./Button"
-import React, {useState} from "react"
+import React, {useState, useCallback} from "react"
 import Text from "./Text"
 const App = ()=>{
     // const [data, setData] = useState(
@@ -32,19 +32,19 @@ const App = ()=>{
 
     //i have a text and a button and on click of the button, the text has to be changed
     const [message, setMessage] = useState("good morning")
-    const changeMessage=()=>{
-        console.log("before update ",message);
+    const changeMessage= useCallback(()=>{
+        // console.log("before update ",message);
          setMessage((prevData)=> {
             console.log("previous data ",prevData);
             return "hello user, good afternoon"
          })
-         console.log("after update ", message);
-    }
+        //  console.log("after update ", message);
+    },[])
     return(
         <>
           <div>
             <h1>{message}</h1>
-                <Button onClick={changeMessage}>change message</Button>
+                <Button clickAction={changeMessage}>change message</Button>
           </div>
         
         </>
